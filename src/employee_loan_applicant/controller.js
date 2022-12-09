@@ -110,6 +110,7 @@ const createEmployeeLoanApplicant = async (req, res) => {
       },
     };
 
+    console.log(JSON.stringify(message));
     sendToRabbitMQ(JSON.stringify(message));
 
     res.status(201).json(response2.rows);
@@ -164,6 +165,7 @@ const deleteEmployeeLoanApplicant = async (req, res) => {
       },
     };
 
+    console.log(JSON.stringify(message));
     sendToRabbitMQ(JSON.stringify(message));
 
     res.status(200).json(response.rows);
@@ -177,4 +179,5 @@ module.exports = {
   getEmployeeLoanApplicantById,
   createEmployeeLoanApplicant,
   updateEmployeeLoanApplicant,
+  deleteEmployeeLoanApplicant,
 };

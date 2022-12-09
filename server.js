@@ -1,4 +1,3 @@
-// Import the express module
 const express = require("express");
 const employeeLoanApplicantRoutes = require("./src/employee_loan_applicant/routes");
 const app = express();

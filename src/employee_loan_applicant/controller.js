@@ -29,7 +29,7 @@ async function sendToRabbitMQ(message) {
         }
 
         channel.assertQueue(queue, {
-          durable: false,
+          durable: true,
         });
 
         channel.sendToQueue(queue, Buffer.from(message));

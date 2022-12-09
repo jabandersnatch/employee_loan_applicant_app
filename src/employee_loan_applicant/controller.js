@@ -152,7 +152,8 @@ const deleteEmployeeLoanApplicant = async (req, res) => {
   const id = parseInt(req.params.id);
 
   try {
-    const response = await pool.query(queries.deleteEmployeeLoanApplicant, [
+    const response = await pool.query(queries.getDocumentNumberById, [id]);
+    const response1 = await pool.query(queries.deleteEmployeeLoanApplicant, [
       id,
     ]);
 
@@ -161,14 +162,14 @@ const deleteEmployeeLoanApplicant = async (req, res) => {
     const message = {
       type: "delete",
       data: {
-        id: id,
+        document_number: response.rows[0].document_number,
       },
     };
 
     console.log(JSON.stringify(message));
     sendToRabbitMQ(JSON.stringify(message));
 
-    res.status(200).json(response.rows);
+    res.status(200).json(response1.rows);
   } catch (err) {
     console.error(err.message);
   }

@@ -9,6 +9,8 @@ const updateEmployeeLoanApplicant =
   "UPDATE employee_loan_applicant SET first_name = $1, last_name = $2, document_type = $3, document_number = $4, email = $5, phone = $6, enterprise_id = $7 WHERE id = $8";
 const deleteEmployeeLoanApplicant =
   "DELETE FROM employee_loan_applicant WHERE id = $1";
+const getDocumentNumberById =
+  "SELECT document_number FROM employee_loan_applicant WHERE id = $1";
 
 module.exports = {
   getEmployeeLoanApplicants,
@@ -17,4 +19,5 @@ module.exports = {
   createEmployeeLoanApplicant,
   updateEmployeeLoanApplicant,
   deleteEmployeeLoanApplicant,
+  getDocumentNumberById,
 };
